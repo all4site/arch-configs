@@ -1,0 +1,59 @@
+extends html, javascript, css
+snippet log  "console log"
+	console.log(${1})	
+snippet template "template"
+	<template>
+		${1}
+	</template>
+
+snippet vbase
+	<script setup lang="ts">
+		${1}
+	</script>
+	<template>
+		<div>
+		${2}	
+		</div>
+	</template>
+
+
+	<style scoped lang="scss">
+
+	</style>
+
+
+snippet toc
+	toClamp(${1:min}, ${2:max}, ${3:375}, ${4:1920});
+
+
+snippet walog 'console log for script tag'
+	watchEffect(() => {
+		console.log(${1})
+	})
+
+
+snippet tor
+	toRem(${1})
+snippet ah 'admin contetn header'
+	<AdminContentHeader title="${1}">
+		<AdminButtonSave ${2} />
+	</AdminContentHeader>
+
+snippet af "admin form"
+	<AdminForm>
+		<AdminContent>${1}</AdminContent>
+	</AdminForm>
+
+snippet uf "user form"
+	const { handleSubmit } = useForm<${1}>({
+		validationSchema: toTypedSchema(
+			object({
+				${2}
+		})
+	),
+	initialValues: {
+		...data.value,
+	},
+	})
+
+

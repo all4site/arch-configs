@@ -1,0 +1,313 @@
+extends javascript
+
+
+snippet log  "console log"
+	console.log(${1})	
+
+
+
+snippet form "react hook form"
+	const {
+		register,
+		handleSubmit,
+		getValues,
+		setValue,
+		reset,
+		control,
+		formState: { errors },
+	} = useForm<${1}>({
+		defaultValues: {
+		},
+	})
+
+
+
+snippet fi 'form input'
+	<Input
+		register={register('${1}', {
+		required: 'required',
+		minLength: { value: 4, message: 'minlength for this field 4' }})}
+		errors={errors}
+		labelname={'${1}'}
+	/>
+
+
+
+snippet dv 'div with class'
+	<div className={${1}}>${2}</div>
+
+
+snippet html "dangerouslySetInnerHTML"
+	dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(${1})}}
+
+
+snippet tc "template for controller without images"
+	@Get()
+	async getAll(): Promise<${1}[] | Error> {
+		return this.${2}.getAll()
+	}
+
+	@Get(':id')
+	async getOneById(@Param('id') id: string): Promise<${1}| Error> {
+		return this.${2}.getOneById(id)
+	}
+
+	@Post()
+	async create(@Body() body: ${1}): Promise<boolean | Error> {
+		return this.${2}.create(body)
+	}
+
+	@Put(':id')
+	async update(@Param('id') id: string, @Body() body: ${1}): Promise<boolean | Error> {
+		return this.${2}.update(id, body)
+	}
+
+	@Delete(':id')
+	async deleteOneById(@Param('id') id: string): Promise<boolean | Error> {
+		return this.${2}.deleteOneById(id)
+	}
+
+	@Delete()
+	async deleteAll(): Promise<boolean | Error> {
+		return this.${2}.deleteAll()
+	}
+
+snippet tci "template for controller with images"
+	constructor(private readonly ${1}: ${2}) {}
+
+	@Get()
+	async getAll(): Promise<${3}[] | Error> {
+		return this.${1}.getAll()
+	}
+
+	@Get(':id')
+	async getOneById(@Param('id') id: string): Promise<${3}| Error> {
+		return this.${1}.getOneById(id)
+	}
+
+	@Post()
+	@UseInterceptors(AnyFilesInterceptor())
+	@ApiConsumes('multipart/form-data')
+	async create(@Body() body: ${3},  @UploadedFiles() files: Express.Multer.File[]): Promise<boolean | Error> {
+		return this.${1}.create(body, files)
+	}
+
+	@Put(':id')
+	@UseInterceptors(AnyFilesInterceptor())
+	@ApiConsumes('multipart/form-data')
+	async update(@Param('id') id: string, @Body() body: ${3},  @UploadedFiles() files: Express.Multer.File[]): Promise<boolean | Error> {
+		return this.${1}.update(id, body, files)
+	}
+
+	@Delete(':id')
+	async deleteOneById(@Param('id') id: string): Promise<boolean | Error> {
+		return this.${1}.deleteOneById(id)
+	}
+
+	@Delete()
+	async deleteAll(): Promise<boolean | Error> {
+		return this.${1}.deleteAll()
+	}
+
+
+snippet ts "template for service fithout images"
+	async getAll(): Promise<${1}[] | Error> {
+		try {
+			return this.${2}.find()
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async getOneById(id: string): Promise<${1} | Error> {
+		try {
+			return this.${2}.findById(id, excludeMongoose)
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async create(body: ${1}): Promise<boolean | Error> {
+		try {
+			const result = await this.${2}.create(body)
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async update(id: string, body: ${1}): Promise<boolean | Error> {
+		try {
+			await this.${2}.findByIdAndUpdate({ _id: id }, body, { new: true })
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async deleteOneById(id: string): Promise<boolean | Error> {
+		try {
+			const result = await this.${2}.findByIdAndDelete(id)
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async deleteAll(): Promise<boolean | Error> {
+		try {
+			const result = await this.${2}.deleteMany()
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+snippet tsi "template for service with images"
+	constructor(
+		private readonly filesService: FilesService,
+		@InjectModel('${1}') private readonly ${3}: Model<${1}>
+	) {}
+
+	async getAll(): Promise<${2}[] | Error> {
+		try {
+			return this.${3}.find()
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async getOneById(id: string): Promise<${2} | Error> {
+		try {
+			return this.${3}.findById(id, excludeMongoose)
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async create(body: ${2},  files: Express.Multer.File[]): Promise<boolean | Error> {
+	    const images = await this.filesService.uploadImagesToIKAndSaveToDB(files)
+		const data = { ...body, images }
+		try {
+			const result = await this.${3}.create(data)
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async update(id: string, body: ${2},  files: Express.Multer.File[]): Promise<boolean | Error> {
+		const images = []
+		if (body.images) {
+			images.push(...body.images)
+		}
+		if (files) {
+			const filesData = await this.filesService.uploadImagesToIKAndSaveToDB(files)
+			images.push(...filesData)
+		}
+
+		const result = { ...body, images }
+		try {
+			await this.${3}.findByIdAndUpdate({ _id: id }, result, { new: true })
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async deleteOneById(id: string): Promise<boolean | Error> {
+		try {
+			const result = await this.${3}.findByIdAndDelete(id)
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+	async deleteAll(): Promise<boolean | Error> {
+		try {
+			const result = await this.${3}.deleteMany()
+			return true
+		} catch (e) {
+			console.error('\x1b[32m', e)
+			throw new BadRequestException(e)
+		}
+	}
+
+
+snippet ud "update data"
+	const formSubmit = async (value: ${1}) => {
+		const result = await updateData('${2}' + id, value, 'json')
+		if (!result) return
+		await myRevalidatePath(myPathNameForFunction(null, null, -2))
+	}
+
+snippet cd "create data"
+	const formSubmit = async (value: ${1}) => {
+		const result = await createData('${2}', value, 'json')
+		if (!result) return
+		await myRevalidatePath(myPathNameForFunction(null, null, -1))
+	}
+
+snippet dd 'delete data'
+	const handlerDelete = async (id?: string) => {
+		const result = await deleteData('${1}' + id)
+		if (!result) return
+		await myRevalidatePath(myPathNameForFunction(null, null))
+	}
+
+snippet ud "update data"
+	const formSubmit = async (value: ${1}) => {
+		const result = await updateData('${2}' + id, value, 'json')
+		if (!result) return
+		await myRevalidatePath(myPathNameForFunction(null, null, -2))
+	}
+
+snippet cn "class name"
+	className={${1}}
+
+snippet mim 'mongoose import module'
+	MongooseModule.forFeature([
+		{
+			name: ${1}.name,
+			schema: ${1}Schema,
+		},
+	]),
+	
+snippet mp 'mongoose props'
+	@Prop(${1})
+	${2}
+
+snippet ms "mongoose schema"
+	import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+
+	@Schema({ timestamps: true })
+	export class ${1} {
+		@Prop({ required: true})
+		${2}
+	}
+
+	export const ${1}Schema = SchemaFactory.createForClass(${1})
+
+snippet mm "mongoose module"
+	MongooseModule.forFeature([
+		{
+			name: ${1}.name,
+			schema: ${1}Schema,
+		},
+	]),
+	
+
+snippet fs 'form split component'
+	<FormSplit title={'${1}'}>
