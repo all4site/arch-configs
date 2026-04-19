@@ -5,7 +5,8 @@ set fzf_fd_opts --follow --hidden --max-depth 5 --exclude .git \
     --exclude .gnupg \
     --exclude .local \
     --exclude .npm \
-    --exclude .nv 
+    --exclude .nv \
+    --exclude .steam 
 
 
 # Preview Image

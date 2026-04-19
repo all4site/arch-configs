@@ -1,0 +1,60 @@
+*{
+    background: #232136;
+}
+window {
+    width:            30%;
+    border:           2px;          /* Толщина рамки */
+    border-color:     #e0af68;      /* Цвет Iris выделит окно на любом фоне */
+    border-radius:    8px;
+    background-color: @background;      /* Твой Base фон */
+}
+
+listview {
+    lines:      8;      /* Установи нужное количество строк */
+    fixed-height: 0;    /* Окно будет сжиматься, если результатов меньше 6 */
+    padding: 10px 0px 10px 10px;
+}
+
+entry{
+    text-color: #e0def4;
+}
+
+prompt{
+    text-color: #e0def4;
+}
+
+element-text{
+    color: #e0def4;
+}
+
+element {
+    padding: 5px;
+    spacing: 10px;
+    border-radius:    8px;
+    margin: 2px 0;
+    background-color: red;
+}
+element.normal.normal 
+{
+    background-color: #2a273f;
+}
+element.selected.active {
+    background-color: #393552;
+}
+element.alternate.active {
+    background-color: #3e8fb0;
+}
+
+element.alternate.normal 
+{
+    background-color: #2a273f;
+}
+
+element.selected.normal{
+    background-color: #393552;    /* Фон выделенного элемента (Surface) */
+}
+
+element-icon {
+    size: 32px; /* Размер иконок */
+}
+

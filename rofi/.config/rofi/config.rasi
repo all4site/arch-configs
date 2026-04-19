@@ -1,0 +1,16 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus";
+    terminal: "fish";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "";
+    display-window: "";
+}
+@import "~/.config/rofi/theme/my.rasi"
+
+
+
