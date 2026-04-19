@@ -54,7 +54,7 @@ vim.keymap.set("n", "<leader>ba", ":w|%bd|e#|bd#|NeoTreeShow<CR>", { desc = "Buf
 vim.keymap.set("n", "<leader>bx", ":bufdo bp|sp|bn|bd<CR>", { desc = "Close all" })
 
 -- NeoTree
-vim.keymap.set("n", "<leader>e", ":Neotree focus toggle<CR>", { desc = "Neotree focus" })
+vim.keymap.set("n", "<leader>e", ":Neotree float toggle<CR>", { desc = "Neotree focus" })
 vim.keymap.set("n", "<leader>o", switchNeotree, { desc = "Switch neotree focus" })
 
 -- Comment
