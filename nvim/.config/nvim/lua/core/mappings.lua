@@ -1,17 +1,11 @@
 vim.g.mapleader = " "
-function switchNeotree()
-	if vim.bo.filetype == "neo-tree" then
-		vim.cmd.wincmd("p")
-	else
-		vim.cmd.Neotree("focus")
-	end
-end
+
 --Search and replace
 vim.keymap.set("n", "<leader>rs", function()
 	-- Получаем слово под курсором
 	local word = vim.fn.expand("<cword>")
 	-- Создаем команду замены с этим словом
-	local cmd = ":s/" .. word .. "/" .. "/g<Left><Left>"
+	local cmd = "<CMD>s/" .. word .. "/" .. "/g<Left><Left>"
 	-- Выполняем команду
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(cmd, true, false, true), "n", false)
 end, { desc = "Replace word under cursor in line", noremap = true, silent = true })
@@ -44,18 +38,17 @@ vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search(
 vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)", { desc = "Yank" })
 
 -- Buffer
-vim.keymap.set("n", "<leader>c", ":bp|sp|bn|bd<CR>", { desc = "Buffer close" })
-vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
-vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
-vim.keymap.set("n", "<leader>bc", ":bd<CR>", { desc = "Current buffer close" })
-vim.keymap.set("n", "<leader>bl", ":BufferLinePick<CR>")
-vim.keymap.set("n", "<leader>bd", ":BufferLinePickClose<CR>", { desc = "Buffer pick close" })
-vim.keymap.set("n", "<leader>ba", ":w|%bd|e#|bd#|NeoTreeShow<CR>", { desc = "Buffer close all except current" })
-vim.keymap.set("n", "<leader>bx", ":bufdo bp|sp|bn|bd<CR>", { desc = "Close all" })
+vim.keymap.set("n", "<leader>c", "<CMD>bp|sp|bn|bd<CR>", { desc = "Buffer close" })
+vim.keymap.set("n", "<Tab>", "<CMD>BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<s-Tab>", "<CMD>BufferLineCyclePrev<CR>")
+vim.keymap.set("n", "<leader>bc", "<CMD>bd<CR>", { desc = "Current buffer close" })
+vim.keymap.set("n", "<leader>bl", "<CMD>BufferLinePick<CR>")
+vim.keymap.set("n", "<leader>bd", "<CMD>BufferLinePickClose<CR>", { desc = "Buffer pick close" })
+vim.keymap.set("n", "<leader>ba", "<CMD>w|%bd|e#|bd#|NeoTreeShow<CR>", { desc = "Buffer close all except current" })
+vim.keymap.set("n", "<leader>bx", "<CMD>bufdo bp|sp|bn|bd<CR>", { desc = "Close all" })
 
 -- NeoTree
-vim.keymap.set("n", "<leader>e", ":Neotree float toggle<CR>", { desc = "Neotree focus" })
-vim.keymap.set("n", "<leader>o", switchNeotree, { desc = "Switch neotree focus" })
+vim.keymap.set("n", "<leader>e", "<CMD>Neotree float toggle<CR>", { desc = "Neotree focus" })
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function()
@@ -79,33 +72,33 @@ vim.keymap.set(
 	{ desc = "Comment multiple line" }
 )
 --Move lines
-vim.keymap.set("n", "<A-k>", ":MoveLine(-1)<CR>", { desc = "Move line up" })
-vim.keymap.set("n", "<A-j>", ":MoveLine(1)<CR>", { desc = "Move line down" })
-vim.keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", { desc = "Move line up" })
-vim.keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "<CMD>MoveLine(-1)<CR>", { desc = "Move line up" })
+vim.keymap.set("v", "<A-k>", ":MoveBlock(-1)<CR>", { desc = "Move line up", silent = true })
+vim.keymap.set("n", "<A-j>", "<CMD>MoveLine(1)<CR>", { desc = "Move line down" })
+vim.keymap.set("v", "<A-j>", ":MoveBlock(1)<CR>", { desc = "Move line down", silent = true })
 
 -- Navigation
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+vim.keymap.set("n", "<c-k>", "<CMD>wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", "<CMD>wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", "<CMD>wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", "<CMD>wincmd l<CR>")
 
 -- Splits
-vim.keymap.set("n", "|", ":vsplit<CR>")
-vim.keymap.set("n", "\\", ":split<CR>")
+vim.keymap.set("n", "|", "<CMD>vsplit<CR>")
+vim.keymap.set("n", "\\", "<CMD>split<CR>")
 
 -- Other
-vim.keymap.set("n", "<leader>w", ":wa!|e<CR>", { desc = "Write file" })
--- vim.keymap.set("n", "<leader>wa", ":wa|e<CR>", { desc = "Write file" })
-vim.keymap.set("n", "<leader>q", ":q|q<CR>", { desc = "Quit" })
+vim.keymap.set("n", "<leader>w", "<CMD>wa!|e<CR>", { desc = "Write file" })
+-- vim.keymap.set("n", "<leader>wa", "<CMD>wa|e<CR>", { desc = "Write file" })
+vim.keymap.set("n", "<leader>q", "<CMD>q|q<CR>", { desc = "Quit" })
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "<esc>", ":nohlsearch<CR>", { desc = "No highlight" })
+vim.keymap.set("n", "<esc>", "<CMD>nohlsearch<CR>", { desc = "No highlight" })
 
 -- Terminal
-vim.keymap.set("n", "<leader>tt", ":ToggleTerm direction=float<CR>", { desc = "ToggleTerm" })
-vim.keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm horizontal" })
-vim.keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=40<CR>", { desc = "ToggleTerm vertical" })
+vim.keymap.set("n", "<leader>tt", "<CMD>ToggleTerm direction=float<CR>", { desc = "ToggleTerm" })
+vim.keymap.set("n", "<leader>th", "<CMD>ToggleTerm direction=horizontal<CR>", { desc = "ToggleTerm horizontal" })
+vim.keymap.set("n", "<leader>tv", "<CMD>ToggleTerm direction=vertical size=40<CR>", { desc = "ToggleTerm vertical" })
 
 -- Telescope
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
@@ -178,6 +171,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- end, { desc = "Go to definition scss ones" })
 
 		vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "Show declaration" })
+		vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { desc = "Lsp signature help" })
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Show implementation" })
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Signature help" })
 		vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
@@ -192,9 +186,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "<leader>lD", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		-- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		-- vim.keymap.set("n", "<leader>lf", function()
-		--     vim.lsp.buf.format()
-		-- end, { desc = 'Format file' })
+		vim.keymap.set("n", "<leader>lf", function()
+			vim.lsp.buf.format()
+		end, { desc = "Format file" })
 		vim.keymap.set("n", "<leader>lf", "<cmd>Format<cr>", { buffer = ev.buf, desc = "Format file" })
 		vim.keymap.set("n", "<leader>lc", function()
 			vim.lsp.buf.code_action()
@@ -202,3 +196,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>le", "<cmd>EslintFix<cr>", { desc = "Run ESLint --fix" })
 	end,
 })
+
+-- Инкрементальное выделение через встроенные функции Neovim 0.11+
+vim.keymap.set("n", "<C-space>", "van", { remap = true, desc = "Init TS selection" })
+vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment TS selection" })
+vim.keymap.set("x", "<bs>", "in", { remap = true, desc = "Decrement TS selection" })

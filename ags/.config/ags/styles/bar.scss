@@ -1,0 +1,9 @@
+@use 'styles/variables.scss' as *;
+
+.bar {
+  background-color: $background;
+  margin: 8px 12px 0;
+  padding: 0 10px;
+  border-radius: $border-radius;
+  min-height: $bar-height;
+}

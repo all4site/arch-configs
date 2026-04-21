@@ -1,0 +1,10 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/bar.scss' as *;
+
+* {
+  all: unset;
+  padding: 0;
+  margin: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}

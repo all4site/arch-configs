@@ -1,0 +1,20 @@
+{
+  "Local Function": {
+    "prefix": "test",
+    "body": [
+      "local function ${1:name}(${2:args})",
+      "\t$0",
+      "end"
+    ],
+    "description": "Создать локальную функцию"
+  },
+
+  "Print Table": {
+    "prefix": "pp",
+    "body": [
+      "print(vim.inspect($1))$0"
+    ],
+    "description": "Удобная печать таблицы через vim.inspect"
+  }
+
+}
