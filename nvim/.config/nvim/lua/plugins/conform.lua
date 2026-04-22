@@ -29,6 +29,8 @@ return {
 				scss = { "stylelint" },
 				yaml = { "eslint" },
 				markdown = { "eslint" },
+				conf = { "shfmt" },
+				hyprlang = { "shfmt" },
 			},
 		})
 	end,

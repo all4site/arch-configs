@@ -31,6 +31,7 @@ return {
 			"bash",
 			"fish",
 			"nix",
+			"hyprlang",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
