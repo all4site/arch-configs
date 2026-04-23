@@ -10,6 +10,9 @@ return {
 			snippets = { preset = "luasnip" },
 			keymap = {
 				preset = "none",
+				-- Добавляем принудительный вызов меню
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+
 				["<Tab>"] = {
 					function(cmp)
 						if cmp.is_visible() then

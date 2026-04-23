@@ -1,17 +1,13 @@
+import { Gtk } from "ags/gtk4";
 import Hyprland from "gi://AstalHyprland"
 import { createState, For } from "gnim"
 
 export function Workspaces() {
     const hypr = Hyprland.get_default()
 
-    // Функция для формирования строки из текущих окон
-    // const getClientsStringOne = () => hypr.get_clients()
-    //     .filter(e => e.workspace.id >= 0)
-    //     .sort((a, b) => a.workspace.id - b.workspace.id)
-    //     .map(c => c)
 
     const getClientsString = () => {
-        const clients = hypr.get_clients()
+        const clients = hypr.clients
             .filter(c => c.workspace.id >= 0)
             .sort((a, b) => a.workspace.id - b.workspace.id);
 
@@ -31,6 +27,8 @@ export function Workspaces() {
 
     const [clientsData, setClientsData] = createState<any>(getClientsString())
 
+    const [activeWs, setActiveWs] = createState<number>(hypr.focused_workspace.id)
+
     hypr.connect("notify::clients", () => {
         const newData = getClientsString()
         setClientsData([...newData])
@@ -40,16 +38,34 @@ export function Workspaces() {
         setClientsData(getClientsString())
     })
 
+    // Обновляем активный воркспейс при смене фокуса
+    hypr.connect("notify::focused-workspace", () => {
+        const newId = hypr.focused_workspace.id;
+        setActiveWs(newId);
+        setClientsData([...getClientsString()]);
+    })
 
     return (
         <box class="Workspaces">
-            {/* {JSON.stringify(clientsData())} */}
-            <For each={clientsData} >
+            {/* {JSON.stringify(activeWs())} */}
+            <For each={clientsData}>
                 {(ws: any) => (
-                    <button class="client-button"
+                    <button
+                        class={`client-button ${activeWs() === ws.id ? "active" : ""}`}
                         onClicked={() => hypr.dispatch('workspace', String(ws.id))}
                     >
-                        <label label={`${ws.id}:${ws.classes.join(" ")} `} />
+                        <box spacing={4} class={'ws-icons'}>
+                            <label label={`${ws.id}:`} class="ws-id" />
+                            <box spacing={2}>
+                                {ws.classes.map((className: string) => (
+                                    <Gtk.Image
+                                        iconName={className}
+                                        class="app-icon"
+                                        pixelSize={18}
+                                    />
+                                ))}
+                            </box>
+                        </box>
                     </button>
                 )}
             </For>

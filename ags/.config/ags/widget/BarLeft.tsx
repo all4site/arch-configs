@@ -17,7 +17,7 @@ export default function BarLeft(monitor = 1) {
         >
             <centerbox cssName="centerbox">
                 <box $type="center">
-                    <Time format="%d.%m.%Y %H:%M" />
+                    <Time />
                 </box>
             </centerbox>
         </window>

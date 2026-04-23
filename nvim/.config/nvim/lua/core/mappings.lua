@@ -35,7 +35,9 @@ vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search(
 })
 
 --Yank
-vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)", { desc = "Yank" })
+vim.keymap.set("x", "p", '"_dP', { desc = "Copy with clear buffer" })
+vim.keymap.set("n", "gp", "<cmd>put<CR>", { desc = "Paste to newline below" })
+vim.keymap.set("n", "gP", "<cmd>put!<CR>", { desc = "Paste to newline above" })
 
 -- Buffer
 vim.keymap.set("n", "<leader>c", "<CMD>bp|sp|bn|bd<CR>", { desc = "Buffer close" })

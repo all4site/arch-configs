@@ -33,25 +33,25 @@ return {
 			},
 		})
 
+		-- vim.lsp.config("somesass_ls", {
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "css", "scss", "sass", "less", "vue" },
+		-- })
+
 		vim.lsp.config("cssls", {
 			filetypes = { "css", "scss", "sass" },
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("cssmodules_ls", {
-			filetypes = { "javascriptreact", "typescriptreact" },
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("css_variables", {
-			filetypes = { "css", "scss", "less" },
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("somesass_ls", {
-			filetypes = { "scss", "less", "vue" },
-			capabilities = capabilities,
-		})
+		-- vim.lsp.config("cssmodules_ls", {
+		-- 	filetypes = { "javascriptreact", "typescriptreact" },
+		-- 	capabilities = capabilities,
+		-- })
+		--
+		-- vim.lsp.config("css_variables", {
+		-- 	filetypes = { "css", "scss", "less" },
+		-- 	capabilities = capabilities,
+		-- })
 
 		vim.lsp.config("emmet_language_server", {
 			filetypes = { "typescriptreact", "html", "vue" },
@@ -69,6 +69,7 @@ return {
 		})
 
 		local base_on_attach = vim.lsp.config.eslint.on_attach
+
 		vim.lsp.config("eslint", {
 			on_attach = function(client, bufnr)
 				if not base_on_attach then

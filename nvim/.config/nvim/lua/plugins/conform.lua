@@ -26,11 +26,11 @@ return {
 				typescript = { "eslint" },
 				html = { "eslint" },
 				css = { "stylelint" },
-				scss = { "stylelint" },
+				scss = { "cssls" },
 				yaml = { "eslint" },
 				markdown = { "eslint" },
 				conf = { "shfmt" },
-				hyprlang = { "shfmt" },
+				hyprland = { "shfmt" },
 			},
 		})
 	end,
