@@ -1,7 +1,8 @@
 import app from "ags/gtk4/app"
 import { Astal } from "ags/gtk4"
 import { Time } from "./Time"
-import { Workspaces } from "./Workspaces"
+import { Ws } from "./Ws"
+import { SystemTray } from "./tray"
 
 export default function Bar(monitor = 1) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -18,13 +19,13 @@ export default function Bar(monitor = 1) {
         >
             <centerbox cssName="centerbox">
                 <box $type="start" >
-                    <Workspaces />
+                    <Ws monitor={monitor} />
                 </box>
                 <box $type="center">
                     <Time format="%a %d.%m.%Y %H:%M" />
                 </box>
                 <box $type="end">
-                    end
+                    <SystemTray />
                 </box>
             </centerbox>
         </window>

@@ -15,11 +15,12 @@
   }
 
   &:not(.active) {
-    color: $subtitle;
+    opacity: 0.5;
+    filter: grayscale(100%); // Сделать серыми, если не активны
   }
 
   &:not(.active) image {
-    opacity: 0.7;
+    opacity: 0.5;
     filter: grayscale(100%); // Сделать серыми, если не активны
   }
 

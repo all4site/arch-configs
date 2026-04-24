@@ -9,8 +9,8 @@ export function Time({ format = "%H:%M" }) {
     }) as Accessor<string>
 
     return (
-        <menubutton>
-            <label label={time} />
-        </menubutton>
+        <box class={'time'}>
+            <label label={time} class={'time-label'} />
+        </box>
     )
 }
