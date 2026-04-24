@@ -21,7 +21,7 @@ export default function Bar(monitor = 1) {
                     <Workspaces />
                 </box>
                 <box $type="center">
-                    <Time />
+                    <Time format="%a %d.%m.%Y %H:%M" />
                 </box>
                 <box $type="end">
                     end
