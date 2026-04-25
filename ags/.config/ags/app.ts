@@ -6,7 +6,7 @@ import BarLeft from "./widget/BarLeft"
 app.start({
     css: style,
     main() {
-        Bar(0)
-        BarLeft(1)
+        Bar(1)
+        BarLeft(0)
     },
 })

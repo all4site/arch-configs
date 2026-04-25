@@ -1,7 +1,29 @@
+@use 'variables.scss' as *;
+
 .tray-item {
   image {
-    opacity: 0.5;
+    opacity: $opacity;
     filter: grayscale(100%); // Сделать серыми, если не активны
 
   }
+}
+
+.tray-menu-popover {
+  background-color: $background;
+  border-radius: $border-radius;
+  color: $text;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .6);
+
+  modelbutton {
+    padding: 6px;
+    border-radius: $border-radius;
+    transition: background-color .5s ease;
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
+
 }

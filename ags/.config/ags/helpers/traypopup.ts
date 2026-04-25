@@ -8,6 +8,8 @@ export function setupTrayItemEvents(self: Gtk.Widget, item: AstalTray.TrayItem) 
         popover.insert_action_group("dbusmenu", item.action_group);
         popover.set_parent(self);
         popover.has_arrow = false;
+        popover.add_css_class("tray-menu-popover");
+
 
         // Жест для правой кнопки (вызов меню)
         const secondaryGesture = Gtk.GestureClick.new();
@@ -15,6 +17,7 @@ export function setupTrayItemEvents(self: Gtk.Widget, item: AstalTray.TrayItem) 
         secondaryGesture.connect("released", () => {
             item.about_to_show();
             popover.popup();
+
         });
         self.add_controller(secondaryGesture);
     }

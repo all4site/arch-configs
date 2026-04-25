@@ -26,8 +26,8 @@ export function SystemTray() {
             <For each={items}>
                 {(item: AstalTray.TrayItem) => (
                     <button
-                        class="item"
-                        tooltipText="" // Убираем подсказки
+                        class="tray-item"
+                        tooltipText=""
                         $={(self) => {
                             setupTrayItemEvents(self, item);
                             watchItemChanges(self, item)

@@ -7,7 +7,7 @@
   }
 
   .ws-icons {
-    margin-right: 10px;
+    margin-right: 14px;
   }
 
   .ws-id {
@@ -15,14 +15,14 @@
   }
 
   &:not(.active) {
-    opacity: 0.5;
+    opacity: $opacity;
     filter: grayscale(100%); // Сделать серыми, если не активны
   }
 
-  &:not(.active) image {
-    opacity: 0.5;
-    filter: grayscale(100%); // Сделать серыми, если не активны
-  }
+  // &:not(.active) image {
+  // opacity: 0.5;
+  // filter: grayscale(100%); // Сделать серыми, если не активны
+  // }
 
   &.active {
     image {

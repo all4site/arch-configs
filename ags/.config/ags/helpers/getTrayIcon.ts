@@ -1,6 +1,7 @@
 import { Gdk, Gtk } from "ags/gtk4";
 import Gio from "gi://Gio?version=2.0";
 
+
 export function getTrayIcon(item: any) {
     const display = Gdk.Display.get_default();
     const theme = Gtk.IconTheme.get_for_display(display || Gdk.Display.open(null)!);
@@ -10,7 +11,7 @@ export function getTrayIcon(item: any) {
     const busId = (item.id || "").toLowerCase();
     const appId = (item.item_id || "").toLowerCase();
     const iconName = (item.icon_name || "").toLowerCase();
-    // console.log(iconName)
+    // console.log(busId)
 
     // 1. Проверка на Chrome/Chromium (по твоему новому логу 'chrome_status_icon_1')
     if (busId.includes("chrome") || appId.includes("chrome")) {

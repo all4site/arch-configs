@@ -50,9 +50,9 @@ export function Ws({ monitor }: { monitor: any }) {
                         class={`client-button ${activeWs() === ws.id ? "active" : ""}`}
                         onClicked={() => hypr.dispatch('workspace', String(ws.id))}
                     >
-                        <box spacing={3} class={'ws-icons'}>
+                        <box spacing={4} class={'ws-icons'}>
                             <label
-                                label={ws.isEmpty ? `${ws.id}` : `${ws.id}:`} class={'ws-id'} />
+                                label={ws.isEmpty ? `${ws.id}` : `${ws.id}`} class={'ws-id'} />
 
                             <box spacing={2}>
                                 {ws.classes.map((className: string) => (
