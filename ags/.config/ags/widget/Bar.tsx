@@ -25,7 +25,7 @@ export default function Bar(monitor = 1) {
                 <box $type="center">
                     <Time format="%a %d.%m.%Y %H:%M" />
                 </box>
-                <box $type="end">
+                <box $type="end" spacing={10}>
                     <Keyboard />
                     <SystemTray />
                 </box>
