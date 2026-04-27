@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+function get-icon
+    set -l target $argv[1]
+    if test -z "$target"
+        read -P "Введите часть названия программы: " target
+    end
+    hyprctl clients | grep -i "class:" | grep -i "$target" | sort -u
+end
+
+# Чтобы функция сработала при запуске скрипта как файла, её нужно вызвать:
+get-icon $argv
