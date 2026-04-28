@@ -1,0 +1,35 @@
+[Icon Theme]
+Name=xalk
+Comment=My personalized icon set for Hyprland
+Inherits=Papirus-Dark,Tela-circle-dark,Adwaita,hicolor
+Directories=scalable/apps,scalable/apps/telegram,scalable/apps/browser,scalable/apps/terminal,scalable/apps/programs,scalable/apps/audio
+
+[scalable/apps]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/telegram]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/browser]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/terminal]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/programs]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/audio]
+Size=48
+Context=Applications
+Type=Scalable

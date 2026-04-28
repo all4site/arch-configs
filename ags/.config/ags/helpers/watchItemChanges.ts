@@ -6,10 +6,11 @@ export function watchItemChanges(self: Gtk.Button, item: AstalTray.TrayItem) {
     const update = () => {
         const img = self.get_child();
         if (img instanceof Gtk.Image) {
-            console.log(`Update icon for: ${item.id}`);
+            // console.log(`Update icon for: ${item.id}`);
             img.gicon = getTrayIcon(item);
         }
     };
+
 
     // Подключаем сигнал
     const id = item.connect("changed", update);

@@ -1,10 +1,9 @@
 import { Gtk } from "ags/gtk4";
-import { createState, For } from "gnim";
+import { createBinding, createState, For } from "gnim";
 import Tray from "gi://AstalTray"
-import { getTrayIcon } from "../helpers/getTrayIcon";
 import AstalTray from "gi://AstalTray";
 import { setupTrayItemEvents } from "../helpers/traypopup";
-import { watchItemChanges } from "../helpers/watchItemChanges";
+import Gio from "gi://Gio?version=2.0";
 
 
 export function SystemTray() {
@@ -21,22 +20,41 @@ export function SystemTray() {
     tray.connect("item-removed", update);
     tray.connect("notify::items", update);
 
+    const getSymbolicIcon = (item: AstalTray.TrayItem) => {
+        // console.log(`Tray ID: ${item.id} | Name: ${item.iconName}`)
+
+        const finalName = item.icon_name || item.id;
+
+        const baseName = finalName.endsWith("-symbolic")
+            ? finalName
+            : `${finalName}-symbolic`;
+
+
+        // console.log("Base name", baseName)
+        return Gio.ThemedIcon.new(baseName);
+    };
+
+    tray.connect('notify::icon-name', getSymbolicIcon)
+
     return (
         <Gtk.Box class="tray" spacing={8}>
             <For each={items}>
                 {(item: AstalTray.TrayItem) => (
-                    <button
+                    < button
                         class="tray-item"
                         tooltipText=""
                         $={(self) => {
                             setupTrayItemEvents(self, item);
-                            watchItemChanges(self, item)
                         }}
                     >
                         <Gtk.Image
-                            gicon={getTrayIcon(item)}
-                            pixelSize={16}
+                            gicon={createBinding(item, "iconName")(() =>
+                                getSymbolicIcon(item)
+                            )}
                         />
+
+
+
                     </button>
                 )}
             </For>

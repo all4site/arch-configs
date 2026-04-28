@@ -2,9 +2,8 @@
 
 .tray-item {
   image {
-    opacity: $opacity;
-    filter: grayscale(100%); // Сделать серыми, если не активны
-
+    color: $inactive;
+    -gtk-icon-size: 12px;
   }
 }
 

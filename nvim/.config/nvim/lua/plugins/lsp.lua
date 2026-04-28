@@ -2,7 +2,6 @@
 -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
@@ -33,25 +32,25 @@ return {
 			},
 		})
 
-		-- vim.lsp.config("somesass_ls", {
-		-- 	capabilities = capabilities,
-		-- 	filetypes = { "css", "scss", "sass", "less", "vue" },
-		-- })
+		vim.lsp.config("somesass_ls", {
+			capabilities = capabilities,
+			filetypes = { "css", "scss", "sass", "less", "vue" },
+		})
 
 		vim.lsp.config("cssls", {
 			filetypes = { "css", "scss", "sass" },
 			capabilities = capabilities,
 		})
 
-		-- vim.lsp.config("cssmodules_ls", {
-		-- 	filetypes = { "javascriptreact", "typescriptreact" },
-		-- 	capabilities = capabilities,
-		-- })
-		--
-		-- vim.lsp.config("css_variables", {
-		-- 	filetypes = { "css", "scss", "less" },
-		-- 	capabilities = capabilities,
-		-- })
+		vim.lsp.config("cssmodules_ls", {
+			filetypes = { "javascriptreact", "typescriptreact" },
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("css_variables", {
+			filetypes = { "css", "scss", "less" },
+			capabilities = capabilities,
+		})
 
 		vim.lsp.config("emmet_language_server", {
 			filetypes = { "typescriptreact", "html", "vue" },

@@ -54,12 +54,11 @@ export function Ws({ monitor }: { monitor: any }) {
                             <label
                                 label={ws.isEmpty ? `${ws.id}` : `${ws.id}`} class={'ws-id'} />
 
-                            <box spacing={2}>
+                            <box spacing={4}>
                                 {ws.classes.map((className: string) => (
                                     <Gtk.Image
-                                        iconName={className}
+                                        iconName={`${className}-symbolic`}
                                         class="app-icon"
-                                        pixelSize={16}
                                     />
                                 ))}
                             </box>

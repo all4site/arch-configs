@@ -1,33 +1,20 @@
 @use "variables.scss" as *;
 
 .client-button {
+  -gtk-icon-size: 16px;
 
-  &.active {
-    color: $text;
-  }
+
 
   .ws-icons {
     margin-right: 14px;
   }
 
-  .ws-id {
-    font-size: 12px;
+  &.active {
+    color: $text;
   }
 
   &:not(.active) {
-    opacity: $opacity;
-    filter: grayscale(100%); // Сделать серыми, если не активны
+    color: $inactive;
   }
 
-  // &:not(.active) image {
-  // opacity: 0.5;
-  // filter: grayscale(100%); // Сделать серыми, если не активны
-  // }
-
-  &.active {
-    image {
-      opacity: 1;
-      filter: none;
-    }
-  }
 }

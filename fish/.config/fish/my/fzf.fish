@@ -1,5 +1,6 @@
 # Exclude folder and add folder with .
-set fzf_fd_opts --follow --hidden --max-depth 5 --exclude .git \
+# set fzf_fd_opts --follow --hidden --max-depth 8 --exclude .git \
+set fzf_fd_opts --follow --hidden --max-depth 8 --exclude .git \
     --exclude .cache \
     --exclude .cargo \
     --exclude .gnupg \
