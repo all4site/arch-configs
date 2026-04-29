@@ -6,6 +6,7 @@ import { SystemTray } from "./tray"
 import { Keyboard } from "./Lang"
 import { Volume } from "./Volume"
 import { Brightness } from "./Brightness"
+import { BatteryWidget } from "./Pover"
 
 export default function Bar(monitor = 1) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -28,6 +29,7 @@ export default function Bar(monitor = 1) {
                     <Time format="%a %d.%m.%Y %H:%M" />
                 </box>
                 <box $type="end" spacing={10} class={'right-panel'}>
+                    <BatteryWidget />
                     <Brightness />
                     <Volume />
                     <Keyboard />
