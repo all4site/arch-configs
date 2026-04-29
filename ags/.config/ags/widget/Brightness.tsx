@@ -23,6 +23,7 @@ export function Brightness() {
         <Gtk.Box>
             <box
                 class="brightness-control"
+                spacing={4}
                 $={(self) => {
                     const scroll = new Gtk.EventControllerScroll({
                         flags: Gtk.EventControllerScrollFlags.VERTICAL,

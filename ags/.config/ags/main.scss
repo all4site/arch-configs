@@ -5,6 +5,7 @@
 @use 'styles/time.scss' as *;
 @use 'styles/lang.scss' as *;
 @use 'styles/volume.scss' as *;
+@use 'styles/brightness.scss' as *;
 
 * {
   all: unset;
@@ -12,4 +13,8 @@
   margin: 0;
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 14px;
+}
+
+.right-panel {
+  -gtk-icon-size: 12px;
 }

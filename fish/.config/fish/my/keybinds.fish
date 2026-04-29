@@ -15,5 +15,11 @@ function fish_user_key_bindings
     # Fzf
     bind -M insert \cf "_fzf_search_directory; kitty +kitten icat --clear"
     bind \cf "_fzf_search_directory; kitty +kitten icat --clear"
+
+    # Icon folder
+    abbr -a ixalk 'cd ~/.local/share/icons/xalk/scalable/apps'
+
+    # Iconf config folder
+    abbr -a icxalk 'cd ~/.local/share/icons/xalk'
 end
 
