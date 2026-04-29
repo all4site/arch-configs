@@ -2,7 +2,7 @@
 Name=xalk
 Comment=My personalized icon set for Hyprland
 Inherits=Papirus-Dark,Tela-circle-dark,Adwaita,hicolor
-Directories=scalable/apps,scalable/apps/telegram,scalable/apps/browser,scalable/apps/terminal,scalable/apps/programs,scalable/apps/audio
+Directories=scalable/apps,scalable/apps/telegram,scalable/apps/browser,scalable/apps/terminal,scalable/apps/programs,scalable/apps/audio,scalable/apps/brightness
 
 [scalable/apps]
 Size=48
@@ -30,6 +30,11 @@ Context=Applications
 Type=Scalable
 
 [scalable/apps/audio]
+Size=48
+Context=Applications
+Type=Scalable
+
+[scalable/apps/brightness]
 Size=48
 Context=Applications
 Type=Scalable

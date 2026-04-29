@@ -1,14 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+      "experimentalDecorators": false,
     "jsx": "react-jsx",
     "jsxImportSource": "ags/gtk4",
-    "lib": [
-      "ES2023"
-    ],
+    "lib": ["ES2023"],
     "module": "ES2022",
     "moduleResolution": "Bundler",
     "strict": true,
-    "target": "ES2020"
-  }
+    "target": "ES2020",
+    "baseUrl": ".",
+  },
 }

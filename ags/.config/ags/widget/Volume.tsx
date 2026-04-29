@@ -3,6 +3,7 @@ import { createBinding } from "ags";
 import Wp from "gi://AstalWp";
 import Gio from "gi://Gio?version=2.0";
 
+
 export function Volume() {
     const speaker = Wp.get_default()?.audio.default_speaker;
 
