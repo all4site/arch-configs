@@ -6,6 +6,8 @@
 @use 'styles/lang.scss' as *;
 @use 'styles/volume.scss' as *;
 @use 'styles/brightness.scss' as *;
+@use 'styles/battery.scss' as *;
+@use 'styles/ram.scss' as *;
 
 * {
   all: unset;

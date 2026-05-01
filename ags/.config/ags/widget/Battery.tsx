@@ -21,7 +21,7 @@ export function BatteryWidget() {
     battery.connect("notify::state", () => setIconName(getBatteryIconName()))
 
     return (
-        <box class="battery-widget">
+        <box class="battery-widget" spacing={4}>
             <Gtk.Image
                 gicon={iconName.as(name => Gio.ThemedIcon.new(name))}
             />
