@@ -6,7 +6,7 @@ import { SystemTray } from "./tray"
 import { Keyboard } from "./Lang"
 import { Volume } from "./Volume"
 import { Brightness } from "./Brightness"
-import { BatteryWidget } from "./Pover"
+import { BatteryWidget } from "./Battery"
 
 export default function Bar(monitor = 1) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -21,6 +21,7 @@ export default function Bar(monitor = 1) {
             anchor={TOP | LEFT | RIGHT}
             application={app}
         >
+
             <centerbox cssName="centerbox">
                 <box $type="start" >
                     <Ws monitor={monitor} />

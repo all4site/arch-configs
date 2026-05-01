@@ -1,0 +1,13 @@
+Script started on 2026-05-01 17:33:01+03:00 [COMMAND="find -L ~/.config/ags -type f | entr -r ags run ~/.config/ags/app.ts" TERM="xterm-kitty" TTY="/dev/pts/0" COLUMNS="93" LINES="46"]
+ags-[1;32mMessage[0m: [34m17:33:02.221[0m: Battery Debug: Percent: 80%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:33:09.534[0m: Battery Debug: Percent: 80%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:33:20.963[0m: Battery Debug: Percent: 80%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:33:31.239[0m: Battery Debug: Percent: 80%, PowerSupply: true, OriginalCharging: false, State: 2, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:33:42.222[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 2, EnergyRate: 26.4328
+ags-[1;32mMessage[0m: [34m17:33:49.769[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:33:54.071[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:35:01.857[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:35:10.871[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 2, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:35:15.049[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 1, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:35:16.055[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: true, State: 5, EnergyRate: 0
+ags-[1;32mMessage[0m: [34m17:41:00.863[0m: Battery Debug: Percent: 79%, PowerSupply: true, OriginalCharging: false, State: 5, EnergyRate: 0
