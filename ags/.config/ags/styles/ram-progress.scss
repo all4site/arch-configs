@@ -1,0 +1,11 @@
+@use "variables.scss" as *;
+
+.ram-used {
+  font-size: 10px;
+  color: rgb(234, 154, 151);
+}
+
+.ram-total {
+  font-size: 8px;
+  color: $text;
+}

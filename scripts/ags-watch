@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+find -L ~/.config/ags -type f | entr -r stdbuf -o0 -e0 ags run ~/.config/ags/app.ts 2>&1 | tee ~/.config/ags/ags_debug.log

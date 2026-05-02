@@ -9,6 +9,11 @@
 @use 'styles/battery.scss' as *;
 @use 'styles/ram.scss' as *;
 @use 'styles/cpu.scss' as *;
+@use 'styles/cpu-progress.scss' as *;
+@use 'styles/ram-progress.scss' as *;
+@use 'styles/gpu-progress.scss' as *;
+@use 'styles/igpu-progress.scss' as *;
+@use 'styles/dash.scss' as *;
 
 * {
   all: unset;

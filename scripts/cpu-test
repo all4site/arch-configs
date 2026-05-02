@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+while true
+    # Генерируем случайное число от 15 до 25
+    set LOAD (random 15 80)
+    
+    # Запуск нагрузки. Флагу --timeout ОБЯЗАТЕЛЬНО нужно значение (например, 5)
+    stress-ng --cpu 20 --cpu-method matrixprod --cpu-load $LOAD --timeout 5 --quiet
+end
