@@ -10,13 +10,19 @@
   margin-top: 83px;
   padding: 20px;
 
-  label {
-    font-size: 12px;
-  }
 
   .progress {
     background: $surface;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
+    padding: 10px;
+
+    label {
+      font-size: 12px;
+    }
+
+    label:first-child {
+      font-weight: bold;
+    }
   }
 }

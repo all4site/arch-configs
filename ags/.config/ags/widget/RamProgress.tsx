@@ -23,7 +23,7 @@ export function RamProgress() {
     }) as Accessor<{ used: string, total: string, percent: number }>
 
     return (
-        <overlay class="ram-progress-container" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}>
+        <overlay class="ram-progress-container">
             <drawingarea
                 class="ram-progress-draw"
                 $={(self) => {
@@ -53,7 +53,7 @@ export function RamProgress() {
             <box orientation={Gtk.Orientation.VERTICAL} halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER} $type="overlay">
                 <label label="RAM" class="ram-title" />
                 <label label={ram(v => `${v.used} GB`)} class="ram-used" />
-                <label label={ram(v => `/ ${v.total} GB`)} class="ram-total" />
+                {/* <label label={ram(v => `/ ${v.total} GB`)} class="ram-total" /> */}
             </box>
         </overlay>
     )

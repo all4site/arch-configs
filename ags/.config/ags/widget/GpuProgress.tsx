@@ -10,7 +10,7 @@ export function GpuProgress() {
     ) as Accessor<number>
 
     return (
-        <overlay class="gpu-progress-container" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}>
+        <overlay class="gpu-progress-container" >
             <drawingarea
                 class="gpu-progress-draw"
                 $={(self) => {

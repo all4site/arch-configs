@@ -19,7 +19,7 @@ export function IgpuProgress() {
     ) as Accessor<number>
 
     return (
-        <overlay class="igpu-progress-container" halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER}>
+        <overlay class="igpu-progress-container">
             <drawingarea
                 class="igpu-progress-draw"
                 $={(self) => {

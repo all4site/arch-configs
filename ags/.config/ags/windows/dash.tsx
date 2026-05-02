@@ -29,7 +29,7 @@ export default function Dash(monitor = 1) {
                     }
                 }}
             />
-            <box valign={Gtk.Align.START} class={'progress'}>
+            <box valign={Gtk.Align.START} class={'progress'} spacing={10}>
                 <RamProgress />
                 <CpuProgress />
                 <GpuProgress />
